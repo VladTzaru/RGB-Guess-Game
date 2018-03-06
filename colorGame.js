@@ -5,8 +5,7 @@ const TZARU_CG = {};
 	"use strict";
 
 	// DOM POINTERS
-	TZARU_CG.board = document.getElementById("board");
-
+	const board = document.getElementById("board");
 
 	// MODEL
 	TZARU_CG.colors = [
@@ -34,13 +33,21 @@ const TZARU_CG = {};
 			div.classList.add("card");
 			fragment.appendChild(div);
 		}
-		this.board.appendChild(fragment);
+		board.appendChild(fragment);
 	};
 
 
 	// VIEW
-	const cards = TZARU_CG.generateCards(6);
+	TZARU_CG.generateCards(6);
 	TZARU_CG.applyColors();
+
+	const cards = document.querySelectorAll(".card");
+	
+	for (let i = 0; i < cards.length; i++) {
+		cards[i].addEventListener("click", function () {
+			console.log(this);
+		});
+	}
 
 })();
 
