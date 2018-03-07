@@ -14,10 +14,10 @@ button {
 	cursor: pointer;
 	color: gray;
 	height: 100%;
+	transition: all .3s;
 }
 
 button:hover {
-	transition: all .3s ease-in-out;
 	color: white;
 	background: steelblue;
 }
@@ -65,15 +65,31 @@ button:hover {
 	margin: 16px;
 	border-radius: 4px;
 	cursor: pointer;
-	transition: all ease-in-out .3s;
+	transition: all ease-in-out .2s;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .card:hover {
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-	transform: translateY(-4px);
 }
 
 .hide {
 	opacity: 0;
+}
+
+
+/* EFFECTS */
+
+/* Ripple effect */
+.ripple {
+	background-position: center;
+	transition: background .8s;
+}
+.ripple:hover {
+	background: steelblue radial-gradient(circle, transparent 1%, steelblue 1%) center/15000%;
+}
+.ripple:active {
+	background-color: #6eb9f7;
+	background-size: 100%;
+	transition: background 0s;
 }
