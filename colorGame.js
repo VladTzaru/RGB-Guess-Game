@@ -4,18 +4,12 @@ const colorDisplay   = document.getElementById("colorDisplay");
 const messageDisplay = document.getElementById("messageDisplay");
 
 // GLOBAL VARIABLES
-const colors = [
-	"rgb(255, 0, 0)",
-	"rgb(255, 255, 0)",
-	"rgb(0, 255, 0)",
-	"rgb(0, 255, 255)",
-	"rgb(0, 0, 255)",
-	"rgb(255, 0, 255)"
-];
+const colors = generateRandomColors(9);
 
 
 // VIEW
-const pickedColor = colors[3];
+const pickedColor    = pickRandomColor();
+
 
 colorDisplay.textContent = pickedColor;
 
@@ -26,6 +20,7 @@ for (let i = 0; i < cards.length; i++) {
 
 	cards[i].addEventListener("click", function () {
 		const clickedColor = this.style.backgroundColor;
+		console.log(clickedColor, pickedColor);
 
 		// Compare clickedColor to pickedColor
 		if (clickedColor === pickedColor) {
@@ -33,7 +28,7 @@ for (let i = 0; i < cards.length; i++) {
 			unhideCards();
 			messageDisplay.textContent = "Correct! :)";
 		} else {
-			messageDisplay.textContent = "Wrong. :(";
+			messageDisplay.textContent = "Not quite, try again.";
 			this.classList.add("hide");
 		}
 	});
@@ -53,6 +48,34 @@ function unhideCards() {
 	});
 }
 
+function pickRandomColor() {
+	const randomColor = Math.floor(Math.random() * colors.length);
+	return colors[randomColor];
+}
+
+function randomColor() {
+	const r = Math.floor(Math.random() * 256);
+	const g = Math.floor(Math.random() * 256);
+	const b = Math.floor(Math.random() * 256);
+	return `rgb(${r}, ${g}, ${b})`;
+}
+
+function generateRandomColors(num) {
+	// Create array
+	const arr = [];
+	// Add num colors to array
+	for (let i = 0; i < num; i++) {
+		// Generate random colors and push them to array
+		arr.push(randomColor());
+	}
+	return arr;
+}
+
+function applyColors() {
+	cards.forEach(function(card) {
+		card.style.backgroundColor = generateRandomColors();
+	});
+}
 
 
 
