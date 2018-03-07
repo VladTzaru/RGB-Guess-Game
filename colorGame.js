@@ -1,14 +1,19 @@
+"use strict";
 // DOM POINTERS
 const cards 	     = document.querySelectorAll(".card");
 const bodyColor      = document.querySelector("body");
 const colorDisplay   = document.getElementById("colorDisplay");
-const mainTitle      = document.getElementsByClassName("main-title")[0];
 const messageDisplay = document.getElementById("messageDisplay");
 const resetBtn       = document.getElementById("reset");
+const easyBtn		 = document.getElementById("easyBtn");
+const hardBtn        = document.getElementById("hardBtn");
+const insaneBtn      = document.getElementById("insaneBtn")
+const mainTitle      = document.getElementsByClassName("main-title")[0];
 
 
 // GLOBAL VARIABLES
 let colors = generateRandomColors(12);
+let mode = "hard";
 
 
 // VIEW
@@ -96,6 +101,40 @@ function reset() {
 
 // EVENT LISTENERS
 resetBtn.addEventListener("click", reset);
+
+easyBtn.addEventListener("click", function() {
+	this.classList.add("selected");
+	hardBtn.classList.remove("selected");
+    insaneBtn.classList.remove("selected");
+    colors = generateRandomColors(6);
+    pickedColor = pickRandomColor();
+    for (let i = 0; i < cards.length; i++) {
+    	colors[i] ? cards[i].style.backgroundColor = colors[i] : cards[i].style.display = "none";
+    }
+});
+
+hardBtn.addEventListener("click", function() {
+	this.classList.add("selected");
+	easyBtn.classList.remove("selected");
+    insaneBtn.classList.remove("selected");
+    colors = generateRandomColors(9);
+    pickedColor = pickRandomColor();
+    for (let i = 0; i < cards.length; i++) {
+    	cards[i].style.backgroundColor = colors[i];
+    	cards[i].style.display = "block";
+    }
+});
+
+insaneBtn.addEventListener("click", function() {
+	this.classList.add("selected");
+	easyBtn.classList.remove("selected");
+    hardBtn.classList.remove("selected");
+    colors = generateRandomColors(12);
+    pickedColor = pickRandomColor();
+    for (let i = 0; i < cards.length; i++) {
+    	colors[i] ? cards[i].style.backgroundColor = colors[i] : cards[i].style.display = "none";
+    }
+});
 
 
 

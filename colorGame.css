@@ -17,7 +17,7 @@ button {
 	transition: all .3s;
 }
 
-button:hover {
+button:hover, button:active {
 	color: white;
 	background: steelblue;
 }
@@ -80,16 +80,7 @@ button:hover {
 
 /* EFFECTS */
 
-/* Ripple effect */
-.ripple {
-	background-position: center;
-	transition: background .8s;
-}
-.ripple:hover {
-	background: steelblue radial-gradient(circle, transparent 1%, steelblue 1%) center/15000%;
-}
-.ripple:active {
-	background-color: #6eb9f7;
-	background-size: 100%;
-	transition: background 0s;
+.selected {
+	background-color: steelblue;
+	color: white;
 }
