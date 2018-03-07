@@ -1,53 +1,58 @@
-// GAME OBJECT
-const TZARU_CG = {};
+// DOM POINTERS
+const cards 	     = document.querySelectorAll(".card");
+const colorDisplay   = document.getElementById("colorDisplay");
+const messageDisplay = document.getElementById("messageDisplay");
 
-(function() {
-	"use strict";
-
-	// DOM POINTERS
-	const board = document.getElementById("board");
-
-	// MODEL
-	TZARU_CG.colors = [
-		"rgb(255, 0, 0)",
-		"rgb(255, 255, 0)",
-		"rgb(0, 255, 0)",
-		"rgb(0, 255, 255)",
-		"rgb(0, 0, 255)",
-		"rgb(255, 0, 255)"
-	];
+// GLOBAL VARIABLES
+const colors = [
+	"rgb(255, 0, 0)",
+	"rgb(255, 255, 0)",
+	"rgb(0, 255, 0)",
+	"rgb(0, 255, 255)",
+	"rgb(0, 0, 255)",
+	"rgb(255, 0, 255)"
+];
 
 
-	// CONTROLLER
-	TZARU_CG.applyColors = function () {
-		const cards = document.querySelectorAll(".card");
-		for (let i = 0; i < cards.length; i++) {
-			cards[i].style.backgroundColor = this.colors[i];
-		}
-	};
+// VIEW
+const pickedColor = colors[3];
 
-	TZARU_CG.generateCards = function (num) {
-		const fragment = document.createDocumentFragment();
-		for (let i = 1; i <= num; i++) {
-			let div = document.createElement("div");
-			div.classList.add("card");
-			fragment.appendChild(div);
-		}
-		board.appendChild(fragment);
-	};
+colorDisplay.textContent = pickedColor;
 
 
-	// VIEW
-	TZARU_CG.generateCards(6);
-	TZARU_CG.applyColors();
+for (let i = 0; i < cards.length; i++) {
+	// Apply colors
+	cards[i].style.backgroundColor = colors[i];
 
-	const cards = document.querySelectorAll(".card");
-	
-	for (let i = 0; i < cards.length; i++) {
-		cards[i].addEventListener("click", function () {
+	cards[i].addEventListener("click", function () {
+		const clickedColor = this.style.backgroundColor;
+
+		// Compare clickedColor to pickedColor
+		if (clickedColor === pickedColor) {
+			changeColors(pickedColor);
+			unhideCards();
+			messageDisplay.textContent = "Correct! :)";
+		} else {
+			messageDisplay.textContent = "Wrong. :(";
 			this.classList.add("hide");
-		});
-	}
+		}
+	});
+}
 
-})();
+
+// CONTROLLER
+function changeColors(color) {
+	cards.forEach(function(card) {
+		card.style.backgroundColor = color;
+	});
+}
+
+function unhideCards() {
+	cards.forEach(function(card) {
+		card.style.opacity = 1;
+	});
+}
+
+
+
 
