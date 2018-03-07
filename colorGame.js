@@ -1,5 +1,6 @@
 // DOM POINTERS
 const cards 	     = document.querySelectorAll(".card");
+const bodyColor      = document.querySelector("body");
 const colorDisplay   = document.getElementById("colorDisplay");
 const mainTitle      = document.getElementsByClassName("main-title")[0];
 const messageDisplay = document.getElementById("messageDisplay");
@@ -28,8 +29,10 @@ for (let i = 0; i < cards.length; i++) {
 		if (clickedColor === pickedColor) {
 			changeColors(pickedColor);
 			mainTitle.style.backgroundColor = pickedColor;
+			bodyColor.style.backgroundColor = pickedColor;
 			unhideCards();
 			messageDisplay.textContent = "Correct! :)";
+			resetBtn.textContent = "Play again?"
 		} else {
 			messageDisplay.textContent = "Not quite, try again.";
 			this.classList.add("hide");
@@ -81,7 +84,9 @@ function reset() {
 	pickedColor = pickRandomColor();
 	colorDisplay.textContent = pickedColor;
 	mainTitle.style.backgroundColor = "steelblue";
+	bodyColor.style.backgroundColor = "#006064";
 	messageDisplay.textContent = "";
+	resetBtn.textContent = "New colors";
 
 	for (let i = 0; i < cards.length; i++) {
 		cards[i].style.backgroundColor = colors[i];
