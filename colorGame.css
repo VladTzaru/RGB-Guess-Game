@@ -20,6 +20,7 @@ button {
 	color: white;
 	padding: 20px 0;
 	margin: 0;
+	transition: background .3s ease-in-out;
 }
 
 .controls {

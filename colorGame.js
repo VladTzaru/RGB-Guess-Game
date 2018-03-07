@@ -1,14 +1,16 @@
 // DOM POINTERS
 const cards 	     = document.querySelectorAll(".card");
 const colorDisplay   = document.getElementById("colorDisplay");
+const mainTitle      = document.getElementsByClassName("main-title")[0];
 const messageDisplay = document.getElementById("messageDisplay");
 
+
 // GLOBAL VARIABLES
-const colors = generateRandomColors(9);
+const colors = generateRandomColors(12);
 
 
 // VIEW
-const pickedColor    = pickRandomColor();
+const pickedColor = pickRandomColor();
 
 
 colorDisplay.textContent = pickedColor;
@@ -20,11 +22,11 @@ for (let i = 0; i < cards.length; i++) {
 
 	cards[i].addEventListener("click", function () {
 		const clickedColor = this.style.backgroundColor;
-		console.log(clickedColor, pickedColor);
 
 		// Compare clickedColor to pickedColor
 		if (clickedColor === pickedColor) {
 			changeColors(pickedColor);
+			mainTitle.style.backgroundColor = pickedColor;
 			unhideCards();
 			messageDisplay.textContent = "Correct! :)";
 		} else {
