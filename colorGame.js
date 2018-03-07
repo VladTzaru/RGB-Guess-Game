@@ -3,14 +3,15 @@ const cards 	     = document.querySelectorAll(".card");
 const colorDisplay   = document.getElementById("colorDisplay");
 const mainTitle      = document.getElementsByClassName("main-title")[0];
 const messageDisplay = document.getElementById("messageDisplay");
+const resetBtn       = document.getElementById("reset");
 
 
 // GLOBAL VARIABLES
-const colors = generateRandomColors(12);
+let colors = generateRandomColors(12);
 
 
 // VIEW
-const pickedColor = pickRandomColor();
+let pickedColor = pickRandomColor();
 
 
 colorDisplay.textContent = pickedColor;
@@ -46,7 +47,7 @@ function changeColors(color) {
 
 function unhideCards() {
 	cards.forEach(function(card) {
-		card.style.opacity = 1;
+		card.classList.remove("hide");
 	});
 }
 
@@ -73,11 +74,23 @@ function generateRandomColors(num) {
 	return arr;
 }
 
-function applyColors() {
-	cards.forEach(function(card) {
-		card.style.backgroundColor = generateRandomColors();
-	});
+
+function reset() {
+	unhideCards();
+	colors = generateRandomColors(12);
+	pickedColor = pickRandomColor();
+	colorDisplay.textContent = pickedColor;
+	mainTitle.style.backgroundColor = "steelblue";
+	messageDisplay.textContent = "";
+
+	for (let i = 0; i < cards.length; i++) {
+		cards[i].style.backgroundColor = colors[i];
+	}
 }
+
+
+// EVENT LISTENERS
+resetBtn.addEventListener("click", reset);
 
 
 
