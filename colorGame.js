@@ -45,7 +45,7 @@ const TZARU_CG = {};
 	
 	for (let i = 0; i < cards.length; i++) {
 		cards[i].addEventListener("click", function () {
-			console.log(this);
+			this.classList.add("hide");
 		});
 	}
 
