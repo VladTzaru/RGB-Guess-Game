@@ -1,6 +1,8 @@
 // GLOBAL VARIABLES
 let numberOfCards = 6; 
-let colors        = generateRandomColors(numberOfCards);
+let colors = [];
+let pickedColor;
+
 
 
 // DOM POINTERS
@@ -13,33 +15,12 @@ const resetBtn       = document.getElementById("reset");
 const mainTitle      = document.getElementsByClassName("main-title")[0];
 
 
-// VIEW
-let pickedColor = pickRandomColor();
+init();
 
-
-colorDisplay.textContent = pickedColor;
-
-
-for (let i = 0; i < cards.length; i++) {
-	// Apply colors
-	cards[i].style.backgroundColor = colors[i];
-
-	cards[i].addEventListener("click", function () {
-		const clickedColor = this.style.backgroundColor;
-
-		// Compare clickedColor to pickedColor
-		if (clickedColor === pickedColor) {
-			changeColors(pickedColor);
-			mainTitle.style.backgroundColor = pickedColor;
-			bodyColor.style.backgroundColor = pickedColor;
-			unhideCards();
-			messageDisplay.textContent = "Correct! :)";
-			resetBtn.textContent = "Play again?"
-		} else {
-			messageDisplay.textContent = "Not quite, try again.";
-			this.classList.add("hide");
-		}
-	});
+function init() {
+	defineModeButtons();
+	defineCardListeners();
+	reset();
 }
 
 
@@ -48,6 +29,41 @@ function changeColors(color) {
 	cards.forEach(function(card) {
 		card.style.backgroundColor = color;
 	});
+}
+
+function defineModeButtons() {
+
+	for (let i = 0; i < modeButtons.length; i++) {
+		modeButtons[i].addEventListener("click", function() {
+			modeButtons[0].classList.remove("selected");
+			modeButtons[1].classList.remove("selected");
+			this.classList.add("selected");
+			this.textContent === "Easy" ? numberOfCards = 3 : numberOfCards = 6;
+			reset();
+		});
+	}
+}
+
+function defineCardListeners() {
+	for (let i = 0; i < cards.length; i++) {
+
+		cards[i].addEventListener("click", function () {
+			const clickedColor = this.style.backgroundColor;
+
+			// Compare clickedColor to pickedColor
+			if (clickedColor === pickedColor) {
+				changeColors(pickedColor);
+				mainTitle.style.backgroundColor = pickedColor;
+				bodyColor.style.backgroundColor = pickedColor;
+				unhideCards();
+				messageDisplay.textContent = "Correct! :)";
+				resetBtn.textContent = "Play again?"
+			} else {
+				messageDisplay.textContent = "Not quite, try again.";
+				this.classList.add("hide");
+			}
+		});
+	}
 }
 
 function unhideCards() {
@@ -81,7 +97,6 @@ function generateRandomColors(num) {
 
 
 function reset() {
-	unhideCards();
 	colors = generateRandomColors(numberOfCards);
 	pickedColor = pickRandomColor();
 	colorDisplay.textContent = pickedColor;
@@ -91,7 +106,12 @@ function reset() {
 	resetBtn.textContent = "New colors";
 
 	for (let i = 0; i < cards.length; i++) {
-		cards[i].style.backgroundColor = colors[i];
+		if (colors[i]) {
+			cards[i].style.display = "block";
+			cards[i].style.backgroundColor = colors[i];
+		} else {
+			cards[i].style.display = "none";
+		}
 	}
 }
 
@@ -99,50 +119,6 @@ function reset() {
 // EVENT LISTENERS
 resetBtn.addEventListener("click", reset);
 
-for (let i = 0; i < modeButtons.length; i++) {
-	modeButtons[i].addEventListener("click", function() {
-		modeButtons[0].classList.remove("selected");
-		modeButtons[1].classList.remove("selected");
-		this.classList.add("selected");
-	});
-}
-
-// easyBtn.addEventListener("click", function() {
-// 	mainTitle.style.backgroundColor = "steelblue";
-// 	bodyColor.style.backgroundColor = "#006064";
-// 	messageDisplay.textContent = "";
-// 	resetBtn.textContent = "New colors";
-// 	numberOfCards = 3;
-// 	// generate 3 colors
-// 	colors = generateRandomColors(numberOfCards);
-// 	// pick a new color
-// 	pickedColor = pickRandomColor();
-// 	// apply colors
-// 	for (let i = 0; i < cards.length; i++) {
-// 		if (colors[i]) {
-// 			cards[i].style.backgroundColor = colors[i];
-// 		} else {
-// 			cards[i].style.display = "none";
-// 		}
-// 	}
-// });
-
-// hardBtn.addEventListener("click", function() {
-// 	mainTitle.style.backgroundColor = "steelblue";
-// 	bodyColor.style.backgroundColor = "#006064";
-// 	messageDisplay.textContent = "";
-// 	resetBtn.textContent = "New colors";
-// 	numberOfCards = 6;
-// 	// generate 3 colors
-// 	colors = generateRandomColors(numberOfCards);
-// 	// pick a new color
-// 	pickedColor = pickRandomColor();
-// 	// apply colors
-// 	for (let i = 0; i < cards.length; i++) {
-// 		cards[i].style.backgroundColor = colors[i];
-// 		cards[i].style.display = "block";
-// 	}
-// });
 
 
 
