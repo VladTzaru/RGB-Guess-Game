@@ -1,14 +1,17 @@
+// GLOBAL VARIABLES
+let numberOfCards = 6; 
+let colors        = generateRandomColors(numberOfCards);
+
+
 // DOM POINTERS
 const cards 	     = document.querySelectorAll(".card");
 const bodyColor      = document.querySelector("body");
 const colorDisplay   = document.getElementById("colorDisplay");
-const mainTitle      = document.getElementsByClassName("main-title")[0];
 const messageDisplay = document.getElementById("messageDisplay");
 const resetBtn       = document.getElementById("reset");
-
-
-// GLOBAL VARIABLES
-let colors = generateRandomColors(12);
+const easyBtn 		 = document.getElementById("easyBtn");
+const hardBtn 		 = document.getElementById("hardBtn");
+const mainTitle      = document.getElementsByClassName("main-title")[0];
 
 
 // VIEW
@@ -80,7 +83,7 @@ function generateRandomColors(num) {
 
 function reset() {
 	unhideCards();
-	colors = generateRandomColors(12);
+	colors = generateRandomColors(numberOfCards);
 	pickedColor = pickRandomColor();
 	colorDisplay.textContent = pickedColor;
 	mainTitle.style.backgroundColor = "steelblue";
@@ -96,6 +99,44 @@ function reset() {
 
 // EVENT LISTENERS
 resetBtn.addEventListener("click", reset);
+
+easyBtn.addEventListener("click", function() {
+	mainTitle.style.backgroundColor = "steelblue";
+	bodyColor.style.backgroundColor = "#006064";
+	messageDisplay.textContent = "";
+	resetBtn.textContent = "New colors";
+	numberOfCards = 3;
+	// generate 3 colors
+	colors = generateRandomColors(numberOfCards);
+	// pick a new color
+	pickedColor = pickRandomColor();
+	// apply colors
+	for (let i = 0; i < cards.length; i++) {
+		if (colors[i]) {
+			cards[i].style.backgroundColor = colors[i];
+		} else {
+			cards[i].style.display = "none";
+		}
+	}
+});
+
+hardBtn.addEventListener("click", function() {
+	mainTitle.style.backgroundColor = "steelblue";
+	bodyColor.style.backgroundColor = "#006064";
+	messageDisplay.textContent = "";
+	resetBtn.textContent = "New colors";
+	numberOfCards = 6;
+	// generate 3 colors
+	colors = generateRandomColors(numberOfCards);
+	// pick a new color
+	pickedColor = pickRandomColor();
+	// apply colors
+	for (let i = 0; i < cards.length; i++) {
+		cards[i].style.backgroundColor = colors[i];
+		cards[i].style.display = "block";
+	}
+});
+
 
 
 
