@@ -5,12 +5,11 @@ let colors        = generateRandomColors(numberOfCards);
 
 // DOM POINTERS
 const cards 	     = document.querySelectorAll(".card");
+const modeButtons    = document.querySelectorAll(".mode");
 const bodyColor      = document.querySelector("body");
 const colorDisplay   = document.getElementById("colorDisplay");
 const messageDisplay = document.getElementById("messageDisplay");
 const resetBtn       = document.getElementById("reset");
-const easyBtn 		 = document.getElementById("easyBtn");
-const hardBtn 		 = document.getElementById("hardBtn");
 const mainTitle      = document.getElementsByClassName("main-title")[0];
 
 
@@ -100,42 +99,50 @@ function reset() {
 // EVENT LISTENERS
 resetBtn.addEventListener("click", reset);
 
-easyBtn.addEventListener("click", function() {
-	mainTitle.style.backgroundColor = "steelblue";
-	bodyColor.style.backgroundColor = "#006064";
-	messageDisplay.textContent = "";
-	resetBtn.textContent = "New colors";
-	numberOfCards = 3;
-	// generate 3 colors
-	colors = generateRandomColors(numberOfCards);
-	// pick a new color
-	pickedColor = pickRandomColor();
-	// apply colors
-	for (let i = 0; i < cards.length; i++) {
-		if (colors[i]) {
-			cards[i].style.backgroundColor = colors[i];
-		} else {
-			cards[i].style.display = "none";
-		}
-	}
-});
+for (let i = 0; i < modeButtons.length; i++) {
+	modeButtons[i].addEventListener("click", function() {
+		modeButtons[0].classList.remove("selected");
+		modeButtons[1].classList.remove("selected");
+		this.classList.add("selected");
+	});
+}
 
-hardBtn.addEventListener("click", function() {
-	mainTitle.style.backgroundColor = "steelblue";
-	bodyColor.style.backgroundColor = "#006064";
-	messageDisplay.textContent = "";
-	resetBtn.textContent = "New colors";
-	numberOfCards = 6;
-	// generate 3 colors
-	colors = generateRandomColors(numberOfCards);
-	// pick a new color
-	pickedColor = pickRandomColor();
-	// apply colors
-	for (let i = 0; i < cards.length; i++) {
-		cards[i].style.backgroundColor = colors[i];
-		cards[i].style.display = "block";
-	}
-});
+// easyBtn.addEventListener("click", function() {
+// 	mainTitle.style.backgroundColor = "steelblue";
+// 	bodyColor.style.backgroundColor = "#006064";
+// 	messageDisplay.textContent = "";
+// 	resetBtn.textContent = "New colors";
+// 	numberOfCards = 3;
+// 	// generate 3 colors
+// 	colors = generateRandomColors(numberOfCards);
+// 	// pick a new color
+// 	pickedColor = pickRandomColor();
+// 	// apply colors
+// 	for (let i = 0; i < cards.length; i++) {
+// 		if (colors[i]) {
+// 			cards[i].style.backgroundColor = colors[i];
+// 		} else {
+// 			cards[i].style.display = "none";
+// 		}
+// 	}
+// });
+
+// hardBtn.addEventListener("click", function() {
+// 	mainTitle.style.backgroundColor = "steelblue";
+// 	bodyColor.style.backgroundColor = "#006064";
+// 	messageDisplay.textContent = "";
+// 	resetBtn.textContent = "New colors";
+// 	numberOfCards = 6;
+// 	// generate 3 colors
+// 	colors = generateRandomColors(numberOfCards);
+// 	// pick a new color
+// 	pickedColor = pickRandomColor();
+// 	// apply colors
+// 	for (let i = 0; i < cards.length; i++) {
+// 		cards[i].style.backgroundColor = colors[i];
+// 		cards[i].style.display = "block";
+// 	}
+// });
 
 
 

@@ -93,3 +93,8 @@ button:hover {
 	background-size: 100%;
 	transition: background 0s;
 }
+
+.selected {
+	background-color: steelblue;
+	color: white;
+}
