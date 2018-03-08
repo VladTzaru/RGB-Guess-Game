@@ -32,7 +32,14 @@
 	</div>
 
 	<footer>
-		<p>Vlad</p>
+		<p>&copy; Tzaru <span id="currentDate"></span> <script>
+			// Dynamic date
+			const showCurrentYear = function() {
+				const span = document.getElementById("currentDate");
+				const currentDate = new Date();
+                span.textContent = currentDate.getFullYear();
+			}();
+		</script></p>
 	</footer>
 
 	<script src="colorGame.js"></script>
