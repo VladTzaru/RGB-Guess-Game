@@ -37,8 +37,15 @@ function defineModeButtons() {
 		modeButtons[i].addEventListener("click", function() {
 			modeButtons[0].classList.remove("selected");
 			modeButtons[1].classList.remove("selected");
+			modeButtons[2].classList.remove("selected");
 			this.classList.add("selected");
-			this.textContent === "Easy" ? numberOfCards = 3 : numberOfCards = 6;
+			if (this.textContent === "Easy") {
+				numberOfCards = 3;
+			} else if (this.textContent === "Normal") {
+				numberOfCards = 6;
+			} else {
+				numberOfCards = 9;
+			}
 			reset();
 		});
 	}
