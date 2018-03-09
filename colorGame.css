@@ -90,6 +90,17 @@ a:hover, a:active {
 	text-transform: uppercase;
 }
 
+#notification {
+	position: relative;
+}
+
+.notification-guy {
+	position: absolute;
+    top: 0;
+    width: 300px;
+    left: 24px;
+}
+
 .card {
 	width: 10%;
     height: 66px;	
