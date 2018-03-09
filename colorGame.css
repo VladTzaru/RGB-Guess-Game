@@ -7,39 +7,42 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
+header {
+	background: url(img/hero.png) 50% no-repeat;
+    background-size: cover;
+    padding: 46px 0;
+	color: white;
+	margin: 0;
+}
+
 button {
 	border: none;
+	user-select: none;
 	outline: none;
 	background: none;
 	font-weight: 700;
 	text-transform: uppercase;
 	cursor: pointer;
-	color: gray;
+	color: #757575;
 	height: 100%;
 	transition: all .3s;
 }
 
 button:hover, button:active {
 	color: white;
-	background: #00695C;
+	background-color: #a12263;
 }
 
 .main-title {
-	font-family: 'Amatic SC', sans-serif;
-	font-weight: 400;
-	font-size: 36px;
 	text-align: center;
 	text-transform: uppercase;
-	background: #00695C;
-	color: white;
-	padding: 20px 0;
-	margin: 0;
-	transition: background .3s ease-in-out;
+	font: 400 36px/150% Amatic SC, sans-serif;
+
 }
 
 #colorDisplay {
 	font-weight: 700;
-	font-size: 56px;
+	font-size: 76px;
 }
 
 .controls {
@@ -95,22 +98,22 @@ button:hover, button:active {
 	transition: background .8s;
 }
 .ripple:hover {
-	background: #00695C radial-gradient(circle, transparent 1%, #00695C 1%) center/15000%;
+	background: #a12263 radial-gradient(circle, transparent 1%, #a12263 1%) center/15000%;
 }
 .ripple:active {
-	background-color: #E0F2F1;
+	background-color: #FCE4EC;
 	background-size: 100%;
 	transition: background 0s;
 }
 
 .selected {
-	background-color: #00695C;
+	background-color: #a12263;
 	color: white;
 }
 
 footer {
 	text-align: center;
-	color: white;
+	color: #757575;
 	text-transform: uppercase;
 	font-size: 14px;
 }

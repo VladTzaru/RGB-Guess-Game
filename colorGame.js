@@ -6,6 +6,7 @@
 	let colors = [];
 	let pickedColor;
 
+
 	// DOM POINTERS
 	const cards 	     = document.querySelectorAll(".card");
 	const modeButtons    = document.querySelectorAll(".mode");
@@ -13,7 +14,6 @@
 	const colorDisplay   = document.getElementById("colorDisplay");
 	const messageDisplay = document.getElementById("messageDisplay");
 	const resetBtn       = document.getElementById("reset");
-	const mainTitle      = document.getElementsByClassName("main-title")[0];
 
 
 	function init() {
@@ -62,7 +62,6 @@
 				// Compare clickedColor to pickedColor
 				if (clickedColor === pickedColor) {
 					changeColors(pickedColor);
-					mainTitle.style.backgroundColor = pickedColor;
 					bodyColor.style.backgroundColor = pickedColor;
 					unhideCards();
 					messageDisplay.textContent = "Correct! :)";
@@ -114,7 +113,6 @@
 		colors = generateRandomColors(numberOfCards);
 		pickedColor = pickRandomColor();
 		colorDisplay.textContent = pickedColor;
-		mainTitle.style.backgroundColor = "#00695C";
 		bodyColor.style.backgroundColor = "white";
 		messageDisplay.textContent = "";
 		resetBtn.textContent = "New colors";
@@ -136,9 +134,6 @@
 
 	// INVOCATIONS
 	init();
+
+
 })();
-
-
-
-
-
