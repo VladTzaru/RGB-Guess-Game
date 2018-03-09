@@ -6,6 +6,8 @@
     let numberOfCards = 6;
     let colors = [];
     let pickedColor;
+    let numberOfTries = 0;
+    let gameOver = false;
 
 
     // DOM POINTERS
@@ -14,6 +16,7 @@
     const bodyColor = document.querySelector("body");
     const colorDisplay = document.getElementById("colorDisplay");
     const resetBtn = document.getElementById("reset");
+    const notification = document.getElementById("notification");
 
 
     function init() {
@@ -21,7 +24,6 @@
         defineCardListeners();
         reset();
     }
-
 
     function changeColors(color) {
         cards.forEach(function(card) {

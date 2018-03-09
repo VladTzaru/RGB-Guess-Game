@@ -15,7 +15,7 @@ body {
 }
 
 header {
-	background: url(img/hero.png) 50% no-repeat;
+	background: url(img/hero_no_guy.png) 50% no-repeat;
     background-size: cover;
     padding: 46px 0;
 	color: white;
@@ -24,13 +24,14 @@ header {
 
 button {
 	border: none;
+	padding: 4px 8px;
 	user-select: none;
 	outline: none;
 	background: none;
 	font-weight: 700;
 	text-transform: uppercase;
 	cursor: pointer;
-	color: #757575;
+	color: white;
 	font-size: 12px;
 	height: 100%;
 	transition: all .3s;
@@ -64,14 +65,11 @@ a:hover, a:active {
 
 .controls {
 	height: 40px;
+	border-top: 4px solid #a12263;
+	border-bottom: 4px solid #a12263;
 	text-align: center;
 	margin-bottom: 24px;
-	background: white;
-}
-
-.controls span {
-	display: inline-block;
-	width: 16%;
+	background: #381842;
 }
 
 #board {
@@ -121,9 +119,11 @@ a:hover, a:active {
 	background-position: center;
 	transition: background .8s;
 }
+
 .ripple:hover {
 	background: #a12263 radial-gradient(circle, transparent 1%, #a12263 1%) center/15000%;
 }
+
 .ripple:active {
 	background-color: #FCE4EC;
 	background-size: 100%;
@@ -132,7 +132,6 @@ a:hover, a:active {
 
 .selected {
 	background-color: #a12263;
-	color: white;
 }
 
 footer {
