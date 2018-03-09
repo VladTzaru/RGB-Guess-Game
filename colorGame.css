@@ -1,9 +1,17 @@
+html, body {
+  height: 100%;
+}
+
 body {
 	margin: 0;
+	height: 100vh;
+	display: flex;
+    flex-direction: column;
 	box-sizing: border-box;
 	background: #006064;
 	transition: all .3s ease-in-out;
 	font-family: 'Open Sans', sans-serif;
+    color: #757575;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -33,6 +41,15 @@ button:hover, button:active {
 	background-color: #a12263;
 }
 
+a {
+	text-decoration: none;
+	color: #a12263;
+}
+
+a:hover, a:active {
+	color: #a12263;
+}
+
 .main-title {
 	text-align: center;
 	text-transform: uppercase;
@@ -60,8 +77,9 @@ button:hover, button:active {
 #board {
 	padding: 24px;
 	background: white;
+	width: 450px;
 	max-width: 450px;
-	margin: 0 auto;
+	margin: 0 auto 24px;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
@@ -90,6 +108,10 @@ button:hover, button:active {
 	opacity: 0;
 }
 
+.content {
+	flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+}
+
 
 /* EFFECTS */
 /* Ripple effect */
@@ -113,7 +135,12 @@ button:hover, button:active {
 
 footer {
 	text-align: center;
-	color: #757575;
 	text-transform: uppercase;
 	font-size: 14px;
+	padding: 24px;
+	background: white;
+}
+
+.design-credits {
+	font-size: 12px;
 }
