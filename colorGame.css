@@ -19,13 +19,13 @@ button {
 
 button:hover, button:active {
 	color: white;
-	background: steelblue;
+	background: #00695C;
 }
 
 .main-title {
 	text-align: center;
 	text-transform: uppercase;
-	background: steelblue;
+	background: #00695C;
 	color: white;
 	padding: 20px 0;
 	margin: 0;
@@ -85,16 +85,16 @@ button:hover, button:active {
 	transition: background .8s;
 }
 .ripple:hover {
-	background: steelblue radial-gradient(circle, transparent 1%, steelblue 1%) center/15000%;
+	background: #00695C radial-gradient(circle, transparent 1%, #00695C 1%) center/15000%;
 }
 .ripple:active {
-	background-color: #6eb9f7;
+	background-color: #E0F2F1;
 	background-size: 100%;
 	transition: background 0s;
 }
 
 .selected {
-	background-color: steelblue;
+	background-color: #00695C;
 	color: white;
 }
 
