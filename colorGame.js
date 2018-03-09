@@ -57,9 +57,9 @@
     }
 
     function notificationGuy(tries) {
-    	if (tries === 3) {
+    	if (tries === 3 && !gameOver) {
     		notification.innerHTML = `<img class="notification-guy" src="img/notification_guy_not_quite.svg" alt="Spaceman">`;
-    	} else if (tries === 6) {
+    	} else if (tries === 6 && !gameOver) {
     		notification.innerHTML = `<img class="notification-guy" src="img/notification_guy_focus.svg" alt="Spaceman">`;
     	} else if (gameOver === true) {
     		notification.innerHTML = `<img class="notification-guy" src="img/notification_guy_well_done.svg" alt="Spaceman">`;
