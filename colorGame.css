@@ -77,8 +77,8 @@ a:hover, a:active {
 #board {
 	padding: 24px;
 	background: white;
-	width: 450px;
-	max-width: 450px;
+	width: 640px;
+	max-width: 100%;
 	margin: 0 auto 24px;
 	display: flex;
 	flex-flow: row wrap;
@@ -145,4 +145,31 @@ footer {
 
 .design-credits {
 	font-size: 12px;
+}
+
+/* MEDIA Q's */
+@media only screen and (max-width: 732px) {
+	#board {
+		width: 340px;
+		padding: 14px;
+	}
+
+	.card {
+		width: 20%;
+		height: 60px;
+	}
+
+	.main-title {
+		font-size: 24px;
+	}
+
+	 #colorDisplay {
+	 	font-size: 34px;
+	 }
+
+	header {
+		padding: 24px 0;
+	}
+
+
 }

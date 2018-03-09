@@ -13,7 +13,6 @@
     const modeButtons = document.querySelectorAll(".mode");
     const bodyColor = document.querySelector("body");
     const colorDisplay = document.getElementById("colorDisplay");
-    const messageDisplay = document.getElementById("messageDisplay");
     const resetBtn = document.getElementById("reset");
 
 
@@ -65,10 +64,8 @@
                     changeColors(pickedColor);
                     bodyColor.style.backgroundColor = pickedColor;
                     unhideCards();
-                    messageDisplay.textContent = "Correct! :)";
                     resetBtn.textContent = "Play again?";
                 } else {
-                    messageDisplay.textContent = "Not quite, try again.";
                     this.classList.add("hide");
                 }
             });
@@ -115,7 +112,6 @@
         pickedColor = pickRandomColor();
         colorDisplay.textContent = pickedColor;
         bodyColor.style.backgroundColor = "white";
-        messageDisplay.textContent = "";
         resetBtn.textContent = "New colors";
 
         for (let i = 0; i < cards.length; i++) {
