@@ -110,11 +110,12 @@
 
 
 	function reset() {
+		unhideCards();
 		colors = generateRandomColors(numberOfCards);
 		pickedColor = pickRandomColor();
 		colorDisplay.textContent = pickedColor;
 		mainTitle.style.backgroundColor = "#00695C";
-		bodyColor.style.backgroundColor = "#006064";
+		bodyColor.style.backgroundColor = "white";
 		messageDisplay.textContent = "";
 		resetBtn.textContent = "New colors";
 
