@@ -6,8 +6,6 @@
     let numberOfCards = 6;
     let colors = [];
     let pickedColor;
-    let numberOfTries = 0;
-    let gameOver = false;
 
 
     // DOM POINTERS
@@ -16,7 +14,6 @@
     const bodyColor = document.querySelector("body");
     const colorDisplay = document.getElementById("colorDisplay");
     const resetBtn = document.getElementById("reset");
-    const notification = document.getElementById("notification");
 
 
     function init() {
@@ -56,28 +53,12 @@
         }
     }
 
-    function notificationGuy(tries) {
-    	if (tries === 3 && !gameOver) {
-    		notification.innerHTML = `<img class="notification-guy" src="img/notification_guy_not_quite.svg" alt="Spaceman">`;
-    	} else if (tries === 6 && !gameOver) {
-    		notification.innerHTML = `<img class="notification-guy" src="img/notification_guy_focus.svg" alt="Spaceman">`;
-    	} else if (gameOver === true) {
-    		notification.innerHTML = `<img class="notification-guy" src="img/notification_guy_well_done.svg" alt="Spaceman">`;
-    	}
-    }
-
-
     function defineCardListeners() {
         for (let i = 0; i < cards.length; i++) {
             cards[i].addEventListener("click", function() {
-            	numberOfTries++;
-            	notificationGuy(numberOfTries);
                 const clickedColor = this.style.backgroundColor;
                 // Compare clickedColor to pickedColor
                 if (clickedColor === pickedColor) {
-                	gameOver = true;
-                	notificationGuy(numberOfTries);
-                	numberOfTries = 0;
                     changeColors(pickedColor);
                     bodyColor.style.backgroundColor = pickedColor;
                     unhideCards();
@@ -124,15 +105,12 @@
 
 
     function reset() {
-    	numberOfTries = 0;
-    	gameOver = false;
         unhideCards();
         colors = generateRandomColors(numberOfCards);
         pickedColor = pickRandomColor();
         colorDisplay.textContent = pickedColor;
         bodyColor.style.backgroundColor = "white";
         resetBtn.textContent = "New colors";
-        notification.innerHTML = "";
 
         for (let i = 0; i < cards.length; i++) {
             if (colors[i]) {
