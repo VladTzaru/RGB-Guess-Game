@@ -1,139 +1,140 @@
+/* jshint esversion: 6 */
 (function() {
-	"use strict";
+    "use strict";
 
-	// GLOBAL VARIABLES
-	let numberOfCards = 6; 
-	let colors = [];
-	let pickedColor;
-
-
-	// DOM POINTERS
-	const cards 	     = document.querySelectorAll(".card");
-	const modeButtons    = document.querySelectorAll(".mode");
-	const bodyColor      = document.querySelector("body");
-	const colorDisplay   = document.getElementById("colorDisplay");
-	const messageDisplay = document.getElementById("messageDisplay");
-	const resetBtn       = document.getElementById("reset");
+    // GLOBAL VARIABLES
+    let numberOfCards = 6;
+    let colors = [];
+    let pickedColor;
 
 
-	function init() {
-		defineModeButtons();
-		defineCardListeners();
-		reset();
-	}
+    // DOM POINTERS
+    const cards = document.querySelectorAll(".card");
+    const modeButtons = document.querySelectorAll(".mode");
+    const bodyColor = document.querySelector("body");
+    const colorDisplay = document.getElementById("colorDisplay");
+    const messageDisplay = document.getElementById("messageDisplay");
+    const resetBtn = document.getElementById("reset");
 
 
-	function changeColors(color) {
-		cards.forEach(function(card) {
-			card.style.backgroundColor = color;
-		});
-	}
+    function init() {
+        defineModeButtons();
+        defineCardListeners();
+        reset();
+    }
 
 
-	function removeSelectedClass() {
-		modeButtons.forEach(function(btn) {
-			btn.classList.remove("selected");
-		})
-	}
+    function changeColors(color) {
+        cards.forEach(function(card) {
+            card.style.backgroundColor = color;
+        });
+    }
 
 
-	function defineModeButtons() {
-		for (let i = 0; i < modeButtons.length; i++) {
-			modeButtons[i].addEventListener("click", function() {
-				removeSelectedClass();
-				this.classList.add("selected");
-				if (this.textContent === "Easy") {
-					numberOfCards = 3;
-				} else if (this.textContent === "Normal") {
-					numberOfCards = 6;
-				} else {
-					numberOfCards = 9;
-				}
-				reset();
-			});
-		}
-	}
+    function removeSelectedClass() {
+        modeButtons.forEach(function(btn) {
+            btn.classList.remove("selected");
+        });
+    }
 
 
-	function defineCardListeners() {
-		for (let i = 0; i < cards.length; i++) {
-			cards[i].addEventListener("click", function () {
-				const clickedColor = this.style.backgroundColor;
-				// Compare clickedColor to pickedColor
-				if (clickedColor === pickedColor) {
-					changeColors(pickedColor);
-					bodyColor.style.backgroundColor = pickedColor;
-					unhideCards();
-					messageDisplay.textContent = "Correct! :)";
-					resetBtn.textContent = "Play again?"
-				} else {
-					messageDisplay.textContent = "Not quite, try again.";
-					this.classList.add("hide");
-				}
-			});
-		}
-	}
+    function defineModeButtons() {
+        for (let i = 0; i < modeButtons.length; i++) {
+            modeButtons[i].addEventListener("click", function() {
+                removeSelectedClass();
+                this.classList.add("selected");
+                if (this.textContent === "Easy") {
+                    numberOfCards = 3;
+                } else if (this.textContent === "Normal") {
+                    numberOfCards = 6;
+                } else {
+                    numberOfCards = 9;
+                }
+                reset();
+            });
+        }
+    }
 
 
-	function unhideCards() {
-		cards.forEach(function(card) {
-			card.classList.remove("hide");
-		});
-	}
+    function defineCardListeners() {
+        for (let i = 0; i < cards.length; i++) {
+            cards[i].addEventListener("click", function() {
+                const clickedColor = this.style.backgroundColor;
+                // Compare clickedColor to pickedColor
+                if (clickedColor === pickedColor) {
+                    changeColors(pickedColor);
+                    bodyColor.style.backgroundColor = pickedColor;
+                    unhideCards();
+                    messageDisplay.textContent = "Correct! :)";
+                    resetBtn.textContent = "Play again?";
+                } else {
+                    messageDisplay.textContent = "Not quite, try again.";
+                    this.classList.add("hide");
+                }
+            });
+        }
+    }
 
 
-	function pickRandomColor() {
-		const randomColor = Math.floor(Math.random() * colors.length);
-		return colors[randomColor];
-	}
+    function unhideCards() {
+        cards.forEach(function(card) {
+            card.classList.remove("hide");
+        });
+    }
 
 
-	function randomColor() {
-		const r = Math.floor(Math.random() * 256);
-		const g = Math.floor(Math.random() * 256);
-		const b = Math.floor(Math.random() * 256);
-		return `rgb(${r}, ${g}, ${b})`;
-	}
+    function pickRandomColor() {
+        const randomColor = Math.floor(Math.random() * colors.length);
+        return colors[randomColor];
+    }
 
 
-	function generateRandomColors(num) {
-		// Create array
-		const arr = [];
-		// Add num colors to array
-		for (let i = 0; i < num; i++) {
-			// Generate random colors and push them to array
-			arr.push(randomColor());
-		}
-		return arr;
-	}
+    function randomColor() {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgb(${r}, ${g}, ${b})`;
+    }
 
 
-	function reset() {
-		unhideCards();
-		colors = generateRandomColors(numberOfCards);
-		pickedColor = pickRandomColor();
-		colorDisplay.textContent = pickedColor;
-		bodyColor.style.backgroundColor = "white";
-		messageDisplay.textContent = "";
-		resetBtn.textContent = "New colors";
-
-		for (let i = 0; i < cards.length; i++) {
-			if (colors[i]) {
-				cards[i].style.display = "block";
-				cards[i].style.backgroundColor = colors[i];
-			} else {
-				cards[i].style.display = "none";
-			}
-		}
-	}
+    function generateRandomColors(num) {
+        // Create array
+        const arr = [];
+        // Add num colors to array
+        for (let i = 0; i < num; i++) {
+            // Generate random colors and push them to array
+            arr.push(randomColor());
+        }
+        return arr;
+    }
 
 
-	// EVENT LISTENERS
-	resetBtn.addEventListener("click", reset);
+    function reset() {
+        unhideCards();
+        colors = generateRandomColors(numberOfCards);
+        pickedColor = pickRandomColor();
+        colorDisplay.textContent = pickedColor;
+        bodyColor.style.backgroundColor = "white";
+        messageDisplay.textContent = "";
+        resetBtn.textContent = "New colors";
+
+        for (let i = 0; i < cards.length; i++) {
+            if (colors[i]) {
+                cards[i].style.display = "block";
+                cards[i].style.backgroundColor = colors[i];
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
 
 
-	// INVOCATIONS
-	init();
+    // EVENT LISTENERS
+    resetBtn.addEventListener("click", reset);
+
+
+    // INVOCATIONS
+    init();
 
 
 })();
