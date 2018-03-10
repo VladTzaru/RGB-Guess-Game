@@ -1,6 +1,6 @@
-/* jshint esversion: 6 */
 (function() {
     "use strict";
+
 
     // GLOBAL VARIABLES
     let numberOfCards = 6;
@@ -21,6 +21,7 @@
         defineCardListeners();
         reset();
     }
+
 
     function changeColors(color) {
         cards.forEach(function(card) {
@@ -52,6 +53,7 @@
             });
         }
     }
+
 
     function defineCardListeners() {
         for (let i = 0; i < cards.length; i++) {
