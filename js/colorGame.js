@@ -12,6 +12,7 @@
     const cards = document.querySelectorAll(".card");
     const modeButtons = document.querySelectorAll(".mode");
     const bodyColor = document.querySelector("body");
+    const preloader = document.getElementById("preloader");
     const colorDisplay = document.getElementById("colorDisplay");
     const resetBtn = document.getElementById("reset");
 
@@ -63,6 +64,7 @@
                 if (clickedColor === pickedColor) {
                     changeColors(pickedColor);
                     bodyColor.style.backgroundColor = pickedColor;
+                    colorDisplay.style.color = pickedColor;
                     unhideCards();
                     resetBtn.textContent = "Play again?";
                 } else {
@@ -111,6 +113,7 @@
         colors = generateRandomColors(numberOfCards);
         pickedColor = pickRandomColor();
         colorDisplay.textContent = pickedColor;
+        colorDisplay.style.color = "white";
         bodyColor.style.backgroundColor = "white";
         resetBtn.textContent = "New colors";
 
@@ -130,7 +133,11 @@
 
 
     // INVOCATIONS
-    init();
+    document.onreadystatechange = function () {
+    	if (document.readyState === "complete") {
+    		init();
+    	}
+    }
 
 
 })();
