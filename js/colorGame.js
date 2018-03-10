@@ -48,7 +48,7 @@
                 } else if (this.textContent === "Normal") {
                     numberOfCards = 6;
                 } else {
-                    numberOfCards = 9;
+                    numberOfCards = 12;
                 }
                 reset();
             });
