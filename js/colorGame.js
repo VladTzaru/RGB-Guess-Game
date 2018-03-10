@@ -64,7 +64,6 @@
                 if (clickedColor === pickedColor) {
                     changeColors(pickedColor);
                     bodyColor.style.backgroundColor = pickedColor;
-                    colorDisplay.style.color = pickedColor;
                     unhideCards();
                     resetBtn.textContent = "Play again?";
                 } else {
@@ -113,7 +112,6 @@
         colors = generateRandomColors(numberOfCards);
         pickedColor = pickRandomColor();
         colorDisplay.textContent = pickedColor;
-        colorDisplay.style.color = "white";
         bodyColor.style.backgroundColor = "white";
         resetBtn.textContent = "New colors";
 
