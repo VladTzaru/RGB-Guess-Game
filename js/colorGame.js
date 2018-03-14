@@ -95,7 +95,7 @@
                     unhideCards();
                     setTimeout(function() {
                         showVictoryAlert();
-                    }, 300);
+                    }, 200);
 
                 } else {
                     this.classList.add("hide");
@@ -160,7 +160,6 @@
                         <span>${achievement}</span>
                     </div>
                 </div>
-                <hr>
                 <div class="modal-action">
                     <button id="modal-action-reset" type="button" class="btn-cta ripple">Play again</button>
                 </div>
