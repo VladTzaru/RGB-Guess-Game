@@ -8,6 +8,7 @@
     let pickedColor;
     let numberOfMoves = 0;
     let isModalActive = false;
+    let rating = "";
 
 
     // DOM POINTERS
@@ -26,6 +27,19 @@
         defineCardListeners();
         reset();
     }
+
+
+    function setRating() {
+       if (numberOfMoves <= 2) {
+            rating = "Amazing";
+       } else if (numberOfMoves <= 5) {
+            rating = "Not bad";
+       } else {
+            rating = "You can do better";
+       }
+       return rating;
+    }
+
 
     function toggleOverlay() {
         isModalActive ? overlay.style.display = "block" : overlay.style.display = "none";
@@ -73,6 +87,7 @@
                 if (clickedColor === pickedColor) {
                     changeColors(pickedColor);
                     body.style.backgroundColor = pickedColor;
+                    setRating();
                     unhideCards();
                     setTimeout(function() {
                         showVictoryAlert();
@@ -135,6 +150,10 @@
                         <p>Moves:</p>
                         <span>${numberOfMoves}</span>
                     </div>
+                    <div class="modal-body-result">
+                        <p>Achievement:</p>
+                        <span>${rating}</span>
+                    </div>
                 </div>
                 <hr>
                 <div class="modal-action">
@@ -175,6 +194,7 @@
         colorDisplay.textContent = pickedColor;
         body.style.backgroundColor = "white";
         numberOfMoves = 0;
+        rating = "";
 
         for (let i = 0; i < cards.length; i++) {
             if (colors[i]) {
