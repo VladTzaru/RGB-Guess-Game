@@ -60,6 +60,7 @@
     function defineCardListeners() {
         for (let i = 0; i < cards.length; i++) {
             cards[i].addEventListener("click", function() {
+                numberOfMoves++;
                 const clickedColor = this.style.backgroundColor;
                 // Compare clickedColor to pickedColor
                 if (clickedColor === pickedColor) {
@@ -67,6 +68,10 @@
                     body.style.backgroundColor = pickedColor;
                     unhideCards();
                     resetBtn.textContent = "Play again?";
+                    alertify({
+                        title: "Good job!",
+                        description: "Your guess is correct."
+                    });
                 } else {
                     this.classList.add("hide");
                 }
@@ -112,15 +117,22 @@
         body.innerHTML = `
             <div class="modal">
                 <div class="modal-header">
-                    <h4>${message.title}</h4>
-                    <p>Color: ${pickedColor}</p>
+                    <h4 class="modal-header-title">${message.title}</h4>
                 </div>
                 <div class="modal-body">
                     <p>${message.description}</p>
-                    <p>Number of moves: ${numberOfMoves}</p>
+                    <div class="modal-body-result">
+                        <p>Color:</p>
+                        <span>${pickedColor}</span>
+                    </div>
+                    <div class="modal-body-result">
+                        <p>Moves:</p>
+                        <span>${numberOfMoves}</span>
+                    </div>
                 </div>
+                <hr>
                 <div class="modal-action">
-                    <button class="btn-cta">Play again</button>
+                    <button class="btn-cta ripple">Play again</button>
                 </div>
             </div>
         `;
