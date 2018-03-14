@@ -8,7 +8,7 @@
     let pickedColor;
     let numberOfMoves = 0;
     let isModalActive = false;
-    let rating = "";
+    let achievement = "";
 
 
     // DOM POINTERS
@@ -35,15 +35,15 @@
 
 
 
-    function setRating() {
+    function setAchievement() {
        if (numberOfMoves <= 2) {
-            rating = "Amazing";
+            achievement = "Shake It Baby";
        } else if (numberOfMoves <= 5) {
-            rating = "Not bad";
+            achievement = "Squeal Like a Chicken";
        } else {
-            rating = "You can do better";
+            achievement = "Gum On My Shoe";
        }
-       return rating;
+       return achievement;
     }
 
 
@@ -93,11 +93,11 @@
                 if (clickedColor === pickedColor) {
                     changeColors(pickedColor);
                     body.style.backgroundColor = pickedColor;
-                    setRating();
+                    setAchievement();
                     unhideCards();
                     setTimeout(function() {
                         showVictoryAlert();
-                    }, 1000);
+                    }, 300);
 
                 } else {
                     this.classList.add("hide");
@@ -158,7 +158,7 @@
                     </div>
                     <div class="modal-body-result">
                         <p>Achievement:</p>
-                        <span>${rating}</span>
+                        <span>${achievement}</span>
                     </div>
                 </div>
                 <hr>
@@ -202,7 +202,7 @@
         colorDisplay.textContent = pickedColor;
         body.style.backgroundColor = "white";
         numberOfMoves = 0;
-        rating = "";
+        achievement = "";
 
         for (let i = 0; i < cards.length; i++) {
             if (colors[i]) {

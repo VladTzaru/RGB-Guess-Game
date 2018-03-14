@@ -144,22 +144,24 @@ a:hover, a:active {
 }
 
 .overlay {
-	position: fixed; /* Sit on top of the page content */
-    display: none; /* Hidden by default */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
-    top: 0; 
+	position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    animation: fadeIn 1s;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer; /* Add a pointer on hover */
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
 }
 
 .modal {
 	z-index: 1000;
 	position: fixed;
+	animation: fadeIn 1s;
 	margin: 0;
 	top: 50%;
 	left: 50%;
@@ -175,8 +177,9 @@ a:hover, a:active {
 	font-size: 24px;
     font-weight: 400;
     margin: 0;
-    color: rgb(16, 228, 125);
+    color: white; 
     padding: 16px;
+    background: #a12263;
 }
 
 .modal-body {
@@ -218,6 +221,15 @@ footer {
 	font-size: 12px;
 }
 
+/* ANIMATIONS */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
 
 /* MEDIA Q's */
 @media only screen and (max-width: 732px) {
