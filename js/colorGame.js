@@ -6,12 +6,13 @@
     let numberOfCards = 6;
     let colors = [];
     let pickedColor;
+    let numberOfMoves = 0;
 
 
     // DOM POINTERS
     const cards = document.querySelectorAll(".card");
     const modeButtons = document.querySelectorAll(".mode");
-    const bodyColor = document.querySelector("body");
+    const body = document.querySelector("body");
     const preloader = document.getElementById("preloader");
     const colorDisplay = document.getElementById("colorDisplay");
     const resetBtn = document.getElementById("reset");
@@ -63,7 +64,7 @@
                 // Compare clickedColor to pickedColor
                 if (clickedColor === pickedColor) {
                     changeColors(pickedColor);
-                    bodyColor.style.backgroundColor = pickedColor;
+                    body.style.backgroundColor = pickedColor;
                     unhideCards();
                     resetBtn.textContent = "Play again?";
                 } else {
@@ -107,12 +108,31 @@
     }
 
 
+    function alertify(message) {
+        body.innerHTML = `
+            <div class="modal">
+                <div class="modal-header">
+                    <h4>${message.title}</h4>
+                    <p>Color: ${pickedColor}</p>
+                </div>
+                <div class="modal-body">
+                    <p>${message.description}</p>
+                    <p>Number of moves: ${numberOfMoves}</p>
+                </div>
+                <div class="modal-action">
+                    <button class="btn-cta">Play again</button>
+                </div>
+            </div>
+        `;
+    }
+
+
     function reset() {
         unhideCards();
         colors = generateRandomColors(numberOfCards);
         pickedColor = pickRandomColor();
         colorDisplay.textContent = pickedColor;
-        bodyColor.style.backgroundColor = "white";
+        body.style.backgroundColor = "white";
         resetBtn.textContent = "New colors";
 
         for (let i = 0; i < cards.length; i++) {
