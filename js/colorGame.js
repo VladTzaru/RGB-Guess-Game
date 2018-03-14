@@ -14,6 +14,7 @@
     const cards = document.querySelectorAll(".card");
     const modeButtons = document.querySelectorAll(".mode");
     const body = document.querySelector("body");
+    const overlay = document.querySelector(".overlay");
     const preloader = document.getElementById("preloader");
     const colorDisplay = document.getElementById("colorDisplay");
     const resetBtn = document.getElementById("reset");
@@ -24,6 +25,10 @@
         defineModeButtons();
         defineCardListeners();
         reset();
+    }
+
+    function toggleOverlay() {
+        isModalActive ? overlay.style.display = "block" : overlay.style.display = "none";
     }
 
 
@@ -70,7 +75,7 @@
                     body.style.backgroundColor = pickedColor;
                     unhideCards();
                     resetBtn.textContent = "Play again?";
-                    showAlert();
+                    showVictoryAlert();
 
                 } else {
                     this.classList.add("hide");
@@ -113,7 +118,7 @@
     }
 
 
-    function alertify(message) {
+    function alertify(message) {        
         scoreModal.innerHTML = `
             <div class="modal">
                 <div class="modal-header">
@@ -138,25 +143,27 @@
         `;
 
         document.getElementById("modal-action-reset").addEventListener("click", function() {
-            closeAlert();
+            closeVictoryAlert();
             reset();
+            toggleOverlay();
         });
     }
 
 
-    function closeAlert() {
+    function closeVictoryAlert() {
         scoreModal.style.display = "none";
         isModalActive = false;
     }
 
 
-    function showAlert() {
+    function showVictoryAlert() {
         alertify({
             title: "Good job!",
             description: "Your guess is correct."
         });
         scoreModal.style.display = "block";
         isModalActive = true;
+        toggleOverlay();
     }
 
 

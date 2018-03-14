@@ -143,11 +143,24 @@ a:hover, a:active {
 	background-color: #a12263;
 }
 
+.overlay {
+	display: none;
+	position: absolute;
+    background: #a9a9a9b5;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 .modal {
+	z-index: 1000;
 	position: fixed;
 	margin: 0;
-	top: 24px;
-	left: 24px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	border-radius: 4px;
     width: 450px;
     background: white;
@@ -190,6 +203,7 @@ footer {
 .design-credits {
 	font-size: 12px;
 }
+
 
 /* MEDIA Q's */
 @media only screen and (max-width: 732px) {
