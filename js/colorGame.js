@@ -143,6 +143,7 @@
             <div class="modal">
                 <div class="modal-header">
                     <h4 class="modal-header-title"><i class="far fa-thumbs-up"></i> ${message.title}</h4>
+                    <a href="javascript:void(0)" class="btn-close" type="button"><i class="far fa-times-circle"></i></a>
                 </div>
                 <div class="modal-body">
                     <p>${message.description}</p>
@@ -167,6 +168,11 @@
         `;
 
         document.getElementById("modal-action-reset").addEventListener("click", function() {
+            closeVictoryAlert();
+            reset();
+        });
+
+        document.querySelector(".btn-close").addEventListener("click", function() {
             closeVictoryAlert();
             reset();
         });

@@ -24,7 +24,7 @@ header {
 
 button {
 	border: none;
-	padding: 6px 8px;
+	padding: 8px 10px;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
 	    -ms-user-select: none;
@@ -57,7 +57,7 @@ a:hover, a:active {
 }
 
 hr {
-	margin: 20px 0;
+	margin: 12px 0;
     border: 1px solid #ececec;
 }
 
@@ -159,6 +159,7 @@ footer {
 .modal-body-result {
 	display: flex;
     flex-flow: row wrap;
+    font-size: 14px;
 }
 
 .modal-body-result p {
@@ -176,6 +177,18 @@ footer {
 .btn-cta {
 	background-color: rgb(16, 228, 125);
 	font-size: 18px;
+}
+
+.btn-close {
+	font-size: 24px;
+    position: absolute;
+    top: 16px;
+    color: white;
+    right: 16px;
+}
+
+.btn-close:hover {
+	color: white;
 }
 
 .content {
