@@ -29,6 +29,12 @@
     }
 
 
+    function toggleScroll() {
+        isModalActive ? body.style.overflow = "hidden" : body.style.overflow = "scroll";
+    }
+
+
+
     function setRating() {
        if (numberOfMoves <= 2) {
             rating = "Amazing";
@@ -138,7 +144,7 @@
         scoreModal.innerHTML = `
             <div class="modal">
                 <div class="modal-header">
-                    <h4 class="modal-header-title">${message.title}</h4>
+                    <h4 class="modal-header-title"><i class="far fa-thumbs-up"></i> ${message.title}</h4>
                 </div>
                 <div class="modal-body">
                     <p>${message.description}</p>
@@ -166,6 +172,7 @@
             closeVictoryAlert();
             reset();
             toggleOverlay();
+            toggleScroll();
         });
     }
 
@@ -184,6 +191,7 @@
         scoreModal.style.display = "block";
         isModalActive = true;
         toggleOverlay();
+        toggleScroll();
     }
 
 
