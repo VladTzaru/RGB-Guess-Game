@@ -171,8 +171,6 @@
         document.getElementById("modal-action-reset").addEventListener("click", function() {
             closeVictoryAlert();
             reset();
-            toggleOverlay();
-            toggleScroll();
         });
     }
 
@@ -180,6 +178,8 @@
     function closeVictoryAlert() {
         scoreModal.style.display = "none";
         isModalActive = false;
+        toggleOverlay();
+        toggleScroll();
     }
 
 
