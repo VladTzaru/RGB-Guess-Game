@@ -16,7 +16,6 @@
     const modeButtons = document.querySelectorAll(".mode");
     const body = document.querySelector("body");
     const overlay = document.querySelector(".overlay");
-    const preloader = document.getElementById("preloader");
     const colorDisplay = document.getElementById("colorDisplay");
     const resetBtn = document.getElementById("reset");
     const scoreModal = document.getElementById("scoreModal");
@@ -34,16 +33,15 @@
     }
 
 
-
     function setAchievement() {
-       if (numberOfMoves <= 2) {
+        if (numberOfMoves <= 2) {
             achievement = "Shake It Baby";
-       } else if (numberOfMoves <= 5) {
+        } else if (numberOfMoves <= 5) {
             achievement = "Squeal Like a Chicken";
-       } else {
+        } else {
             achievement = "Gum On My Shoe";
-       }
-       return achievement;
+        }
+        return achievement;
     }
 
 
@@ -140,7 +138,7 @@
     }
 
 
-    function alertify(message) {        
+    function alertify(message) {
         scoreModal.innerHTML = `
             <div class="modal">
                 <div class="modal-header">
@@ -220,11 +218,11 @@
 
 
     // INVOCATIONS
-    document.onreadystatechange = function () {
-    	if (document.readyState === "complete") {
-    		init();
-    	}
-    }
+    document.onreadystatechange = function() {
+        if (document.readyState === "complete") {
+            init();
+        }
+    };
 
 
 })();
