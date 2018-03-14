@@ -75,7 +75,9 @@
                     body.style.backgroundColor = pickedColor;
                     unhideCards();
                     resetBtn.textContent = "Play again?";
-                    showVictoryAlert();
+                    setTimeout(function() {
+                        showVictoryAlert();
+                    }, 500);
 
                 } else {
                     this.classList.add("hide");
