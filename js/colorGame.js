@@ -7,6 +7,7 @@
     let colors = [];
     let pickedColor;
     let numberOfMoves = 0;
+    let isModalActive = false;
 
 
     // DOM POINTERS
@@ -16,6 +17,7 @@
     const preloader = document.getElementById("preloader");
     const colorDisplay = document.getElementById("colorDisplay");
     const resetBtn = document.getElementById("reset");
+    const scoreModal = document.getElementById("scoreModal");
 
 
     function init() {
@@ -68,10 +70,8 @@
                     body.style.backgroundColor = pickedColor;
                     unhideCards();
                     resetBtn.textContent = "Play again?";
-                    alertify({
-                        title: "Good job!",
-                        description: "Your guess is correct."
-                    });
+                    showAlert();
+
                 } else {
                     this.classList.add("hide");
                 }
@@ -114,7 +114,7 @@
 
 
     function alertify(message) {
-        body.innerHTML = `
+        scoreModal.innerHTML = `
             <div class="modal">
                 <div class="modal-header">
                     <h4 class="modal-header-title">${message.title}</h4>
@@ -132,10 +132,31 @@
                 </div>
                 <hr>
                 <div class="modal-action">
-                    <button class="btn-cta ripple">Play again</button>
+                    <button id="modal-action-reset" type="button" class="btn-cta ripple">Play again</button>
                 </div>
             </div>
         `;
+
+        document.getElementById("modal-action-reset").addEventListener("click", function() {
+            closeAlert();
+            reset();
+        });
+    }
+
+
+    function closeAlert() {
+        scoreModal.style.display = "none";
+        isModalActive = false;
+    }
+
+
+    function showAlert() {
+        alertify({
+            title: "Good job!",
+            description: "Your guess is correct."
+        });
+        scoreModal.style.display = "block";
+        isModalActive = true;
     }
 
 
