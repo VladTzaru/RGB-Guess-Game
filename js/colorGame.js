@@ -174,7 +174,6 @@
         pickedColor = pickRandomColor();
         colorDisplay.textContent = pickedColor;
         body.style.backgroundColor = "white";
-        resetBtn.textContent = "New colors";
         numberOfMoves = 0;
 
         for (let i = 0; i < cards.length; i++) {
