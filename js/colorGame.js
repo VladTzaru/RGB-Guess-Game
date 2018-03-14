@@ -150,6 +150,7 @@
                     <div class="modal-body-result">
                         <p>Color:</p>
                         <span>${pickedColor}</span>
+                        <span id="pickedColor-square"></span>
                     </div>
                     <div class="modal-body-result">
                         <p>Moves:</p>
@@ -165,6 +166,8 @@
                 </div>
             </div>
         `;
+
+        document.getElementById("pickedColor-square").style.backgroundColor = pickedColor;
 
         document.getElementById("modal-action-reset").addEventListener("click", function() {
             closeVictoryAlert();

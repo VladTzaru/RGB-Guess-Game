@@ -192,6 +192,13 @@ footer {
 	flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
 }
 
+#pickedColor-square {
+    width: 20px;
+    height: 20px;
+    margin-left: 16px;
+    border-radius: 50%;
+}
+
 /* EFFECTS */
 /* Ripple effect */
 .ripple {
