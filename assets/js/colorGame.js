@@ -9,7 +9,7 @@
     let numberOfMoves = 0;
     let isModalActive = false;
     let achievement = "";
-    let mode = "";
+    let mode = "Normal";
 
 
     // DOM POINTERS
