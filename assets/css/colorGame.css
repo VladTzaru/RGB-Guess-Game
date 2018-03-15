@@ -56,6 +56,10 @@ a:hover, a:active {
 	color: #a12263;
 }
 
+img {
+	max-width: 100%;
+}
+
 footer {
 	text-align: center;
 	text-transform: uppercase;
@@ -190,6 +194,10 @@ footer {
 
 .content {
 	flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+}
+
+.rgb-color-model {
+	width: 64px;
 }
 
 #pickedColor-square {
