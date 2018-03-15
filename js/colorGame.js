@@ -9,6 +9,7 @@
     let numberOfMoves = 0;
     let isModalActive = false;
     let achievement = "";
+    let mode = "";
 
 
     // DOM POINTERS
@@ -71,10 +72,13 @@
                 this.classList.add("selected");
                 if (this.textContent === "Easy") {
                     numberOfCards = 3;
+                    mode = this.textContent;
                 } else if (this.textContent === "Normal") {
                     numberOfCards = 6;
+                    mode = this.textContent;
                 } else {
                     numberOfCards = 12;
+                    mode = this.textContent;
                 }
                 reset();
             });
@@ -155,6 +159,10 @@
                     <div class="modal-body-result">
                         <p>Moves:</p>
                         <span>${numberOfMoves}</span>
+                    </div>
+                    <div class="modal-body-result">
+                        <p>Difficulty:</p>
+                        <span>${mode}</span>
                     </div>
                     <div class="modal-body-result">
                         <p>Achievement:</p>
