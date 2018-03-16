@@ -234,6 +234,15 @@ footer {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+#fixed-colorDisplay img {
+	width: 100px;
+    position: absolute;
+    left: 31%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+
 /* EFFECTS */
 /* Ripple effect */
 .ripple {
@@ -349,5 +358,16 @@ footer {
 
 	#fixed-colorDisplay {
 		font-size: 24px;
+	}
+
+	#fixed-colorDisplay img {
+		width: 66px;
+    	left: 12px;
+	}
+}
+
+@media only screen and (max-width: 1160px) and (min-width: 732px)  {
+	#fixed-colorDisplay img {
+		left: 19%;
 	}
 }
