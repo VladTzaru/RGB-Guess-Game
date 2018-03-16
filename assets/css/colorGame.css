@@ -132,7 +132,7 @@ footer {
 .intro-text {
 	text-align: center;
 	color: white;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 .modal {
@@ -217,6 +217,23 @@ footer {
     border-radius: 50%;
 }
 
+#fixed-colorDisplay {
+	color: white;
+	transition: all .3s ease-in-out;
+	text-shadow: #757575 1px 0 3px;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+	font-size: 36px;
+    background-color: white;
+    position: fixed;
+    padding: 0 16px;
+    display: none;
+    -webkit-animation: slideInTop 200ms ease-in;
+            animation: slideInTop 200ms ease-in;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
 /* EFFECTS */
 /* Ripple effect */
 .ripple {
@@ -275,6 +292,28 @@ footer {
 	}
 }
 
+@-webkit-keyframes slideInTop {
+	from {
+		-webkit-transform: translateY(-100%);
+		        transform: translateY(-100%);
+	}
+	to {
+	    -webkit-transform: translateY(0);
+	            transform: translateY(0);
+	}
+}
+
+@keyframes slideInTop {
+	from {
+		-webkit-transform: translateY(-100%);
+		        transform: translateY(-100%);
+	}
+	to {
+	    -webkit-transform: translateY(0);
+	            transform: translateY(0);
+	}
+}
+
 /* MEDIA Q's */
 @media only screen and (max-width: 732px) {
 	#board {
@@ -300,10 +339,15 @@ footer {
 	}
 
 	button, .intro-text, footer {
-		font-size: 12px;
+		font-size: 14px;
+		line-height: 22px;
 	}
 
 	.design-credits {
 		font-size: 10px;
+	}
+
+	#fixed-colorDisplay {
+		font-size: 24px;
 	}
 }

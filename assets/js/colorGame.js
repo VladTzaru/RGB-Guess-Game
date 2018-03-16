@@ -20,6 +20,24 @@
     const colorDisplay = document.getElementById("colorDisplay");
     const resetBtn = document.getElementById("reset");
     const scoreModal = document.getElementById("scoreModal");
+    const fixedColorDisplay = document.getElementById("fixed-colorDisplay");
+    const fixedCDText = document.querySelector("#fixed-colorDisplay p");
+
+
+   function isInViewport(elem) {
+        const bounding = elem.getBoundingClientRect();
+        return (
+            bounding.top >= 0 &&
+            bounding.left >= 0 &&
+            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+    }
+
+    
+    window.onscroll = function() {
+        isInViewport(colorDisplay) ? fixedColorDisplay.style.display = "none" : fixedColorDisplay.style.display = "block";
+    };
 
 
     function init() {
@@ -98,6 +116,7 @@
                 if (clickedColor === pickedColor) {
                     changeColors(pickedColor);
                     body.style.backgroundColor = pickedColor;
+                    fixedColorDisplay.style.backgroundColor = pickedColor;
                     setAchievement();
                     unhideCards();
                     setTimeout(function() {
@@ -211,6 +230,8 @@
         colors = generateRandomColors(numberOfCards);
         pickedColor = pickRandomColor();
         colorDisplay.textContent = pickedColor;
+        fixedColorDisplay.style.backgroundColor = "white";
+        fixedCDText.textContent = pickedColor;
         body.style.backgroundColor = "white";
         numberOfMoves = 0;
         achievement = "";
