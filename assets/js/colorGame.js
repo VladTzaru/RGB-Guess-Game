@@ -3,13 +3,13 @@
 
 
     // GLOBAL VARIABLES
-    let numberOfCards = 6;
+    let numberOfCards = 3;
     let colors = [];
     let pickedColor;
     let numberOfMoves = 0;
     let isModalActive = false;
     let achievement = "";
-    let mode = "Normal";
+    let mode = "Easy";
 
 
     // DOM POINTERS
@@ -35,11 +35,14 @@
 
 
     function setAchievement() {
-        if (numberOfMoves <= 2) {
+        if (numberOfMoves === 1) {
             achievement = "Shake It Baby";
-        } else if (numberOfMoves <= 5) {
+        } else if (numberOfMoves <= 4) {
             achievement = "Squeal Like a Chicken";
-        } else {
+        } else if (numberOfMoves <= 8) {
+            achievement = "I Swear I Did It By Mistake";
+        }
+        else {
             achievement = "Gum On My Shoe";
         }
         return achievement;
@@ -147,7 +150,6 @@
             <div class="modal">
                 <div class="modal-header">
                     <h4 class="modal-header-title"><i class="far fa-thumbs-up"></i> ${message.title}</h4>
-                    <a href="javascript:void(0)" class="btn-close" type="button"><i class="far fa-times-circle"></i></a>
                 </div>
                 <div class="modal-body">
                     <p>${message.description}</p>
@@ -178,11 +180,6 @@
         document.getElementById("pickedColor-square").style.backgroundColor = pickedColor;
 
         document.getElementById("modal-action-reset").addEventListener("click", function() {
-            closeVictoryAlert();
-            reset();
-        });
-
-        document.querySelector(".btn-close").addEventListener("click", function() {
             closeVictoryAlert();
             reset();
         });

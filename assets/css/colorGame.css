@@ -12,7 +12,7 @@ body {
 	display: flex;
     flex-direction: column;
 	transition: all .3s ease-in-out;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Ubuntu", sans-serif;
     color: #757575;
 	-webkit-font-smoothing: antialiased;
 }
@@ -40,6 +40,7 @@ button {
 	color: white;
 	font-size: 14px;
 	height: 100%;
+	letter-spacing: 0.75px;
 	transition: all .2s linear;
 	border-radius: 2px;
 }
@@ -94,6 +95,10 @@ footer {
 	text-align: center;
 	margin-bottom: 24px;
 	background: #381842;
+}
+
+.controls button {
+	margin-right: 16px;
 }
 
 #board {
@@ -151,9 +156,8 @@ footer {
 	font-size: 24px;
     font-weight: 400;
     margin: 0;
-    color: white; 
-    padding: 16px;
-    background: #a12263;
+    color: rgb(11, 160, 88); 
+    padding: 16px 16px 0 16px;
 }
 
 .modal-body {
@@ -172,6 +176,7 @@ footer {
 	text-transform: uppercase;
     font-weight: 600;
     opacity: .4;
+    letter-spacing: 0.75px;
 }
 
 .modal-action {
@@ -179,21 +184,22 @@ footer {
 	background: #FAFAFA;
 }
 
+#modal-action-reset {
+	background: rgb(11, 160, 88);
+}
+
+#modal-action-reset:hover {
+	background: rgb(16, 210, 116);
+}
+
 .btn-cta {
 	background-color: rgb(16, 228, 125);
 	font-size: 18px;
 }
 
-.btn-close {
+#reset {
 	font-size: 24px;
-    position: absolute;
-    top: 16px;
-    color: white;
-    right: 16px;
-}
-
-.btn-close:hover {
-	color: white;
+	margin-bottom: 16px;
 }
 
 .content {
