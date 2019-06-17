@@ -39,7 +39,6 @@ button {
 	cursor: pointer;
 	color: white;
 	font-size: 14px;
-	height: 100%;
 	letter-spacing: 0.75px;
 	transition: all .2s linear;
 	border-radius: 2px;
